@@ -7,7 +7,7 @@
  */
 
 import React, { Component } from 'react';
-import { Platform, StyleSheet, ScrollView, Text, View, Image } from 'react-native';
+import { Platform, StyleSheet, ScrollView, Text, View, Image,TextInput,AppRegistry } from 'react-native';
 
 const instructions = Platform.select({
   ios: 'Press Cmd+R to reload,\n' + 'Cmd+D or shake for dev menu',
@@ -35,6 +35,7 @@ export default class HelloWorldApp extends Component {
   constructor(props) {
     super(props);
     this.state = { isShowingText: true };
+    this.state = {text: ''};
 
     // 每1000毫秒对showText状态做一次取反操作
     setInterval(() => {
@@ -73,22 +74,39 @@ export default class HelloWorldApp extends Component {
         <Text style={{ fontSize: 72 }}>If you like</Text>
         <Text style={{ fontSize: 80 }}>React Native</Text>
 
-        <View style={{ flex:1, height: 200 }}>
+        <View style={{ flex: 1, height: 200 }}>
           <View style={{ flex: 1, backgroundColor: 'powderblue' }} />
           <View style={{ flex: 2, backgroundColor: 'skyblue' }} />
           <View style={{ flex: 3, backgroundColor: 'steelblue' }} />
         </View>
 
-      <View style={{flex: 1,height:100,backgroundColor:'black', flexDirection: 'row',justifyContent:"space-around",alignItems:"flex-end"}}>
-        <View style={{width: 50, height: 50, backgroundColor: 'powderblue'}} />
-        <View style={{width: 60, height: 60, backgroundColor: 'skyblue'}} />
-        <View style={{width: 70, height: 70, backgroundColor: 'steelblue'}} />
-      </View>
-      <View style={{flex: 1,height:100,backgroundColor:'black', flexDirection: 'column',justifyContent:"space-around",alignItems:"baseline"}}>
-        <View style={{width: 50, height: 50, backgroundColor: 'powderblue'}} />
-        <View style={{width: 60, height: 60, backgroundColor: 'skyblue'}} />
-        <View style={{width: 70, height: 70, backgroundColor: 'steelblue'}} />
-      </View>
+        <View style={{ flex: 1, height: 100, backgroundColor: 'black', flexDirection: 'row', justifyContent: "space-around", alignItems: "flex-end" }}>
+          <View style={{ width: 50, height: 50, backgroundColor: 'powderblue' }} />
+          <View style={{ width: 60, height: 60, backgroundColor: 'skyblue' }} />
+          <View style={{ width: 70, height: 70, backgroundColor: 'steelblue' }} />
+        </View>
+        <View style={{ flex: 1, height: 100, backgroundColor: 'black', flexDirection: 'column', justifyContent: "space-around", alignItems: "baseline" }}>
+          <View style={{ width: 50, height: 50, backgroundColor: 'powderblue' }} />
+          <View style={{ width: 60, height: 60, backgroundColor: 'skyblue' }} />
+          <View style={{ width: 70, height: 70, backgroundColor: 'steelblue' }} />
+        </View>
+
+        <View style={{ padding: 20 }}>
+          <TextInput
+            style={{ height: 40 }}
+            placeholder="Type here to translate!"
+            onChangeText={(text) => this.setState({ text })}
+          />
+          <TextInput
+            style={{ height: 40 }}
+            placeholder="Type here to translate!"
+            onChangeText={(text) => this.setState({ text })}
+          />
+          <Text>
+            {this.state.text.split(' ').map((word) => word && '🍕').join(' ')}
+          </Text>
+        </View>
+        <Text>Hello, world!</Text>
       </ScrollView>
     );
   }
